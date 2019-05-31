@@ -2,7 +2,7 @@
 
 import Foundation
 
-var str = "Hello, playground"
+var str = "Bubble Sort"
 
 
 //: [Next](@next)
