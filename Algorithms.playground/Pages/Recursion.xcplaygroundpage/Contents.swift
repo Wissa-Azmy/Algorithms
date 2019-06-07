@@ -35,13 +35,14 @@ print("\nDone.\nResult: \(result)")
 
 print("\n\n\n============ Factorial ============\n")
 
-func factorial(of number: Int) -> Int {
+func getFactorial(of number: Int) -> Int {
     if number == 0 {
         return 1
     }
     
-    return number * factorial(of: number - 1)
+    return number * getFactorial(of: number - 1)
 }
 
-let result2 = factorial(of: 5)
+let result2 = getFactorial(of: 5)
 print("\nDone.\nResult: \(result2)")
+
