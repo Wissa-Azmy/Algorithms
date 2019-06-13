@@ -11,7 +11,7 @@ let items = [6, 20, 8, 19, 56, 23, 87, 41, 49, 53]
 func mergeSort(_ array: [Int]) -> [Int] {
     guard array.count > 1 else { return array }
     let middleIndex = array.count / 2
-
+    
     let leftArray = mergeSort(Array(array[0..<middleIndex]))
     let rightArray = mergeSort(Array(array[middleIndex..<array.count]))
     
@@ -19,7 +19,6 @@ func mergeSort(_ array: [Int]) -> [Int] {
     
     return merge(leftArray, rightArray)
 }
-
 
 func merge(_ leftArray: [Int], _ rightArray: [Int]) -> [Int] {
     var leftIndex = 0
@@ -55,3 +54,47 @@ func merge(_ leftArray: [Int], _ rightArray: [Int]) -> [Int] {
 }
 
 print(mergeSort(items))
+
+
+
+// Another implementation
+func mergeSort2(_ array: [Int]) -> [Int] {
+    guard array.count > 1 else { return array }
+    
+    let midIndex = array.count / 2
+    
+    let leftArray = mergeSort(Array(array[0..<midIndex]))
+    let rightArray = mergeSort(Array(array[midIndex..<array.count]))
+    
+    return merge2(leftArray, rightArray)
+}
+
+func merge2(_ leftArr: [Int], _ rightArr: [Int]) -> [Int] {
+    var leftArray = leftArr, rightArray = rightArr
+    var sortedArray = [Int]()
+    
+    while !leftArray.isEmpty && !rightArray.isEmpty {
+        if leftArray.first! < rightArray.first! {
+            sortedArray.append(leftArray.removeFirst())
+        } else if rightArray.first! < leftArray.first! {
+            sortedArray.append(rightArray.removeFirst())
+        } else {
+            sortedArray.append(leftArray.removeFirst())
+            sortedArray.append(rightArray.removeFirst())
+        }
+    }
+    
+    while !leftArray.isEmpty {
+        sortedArray.append(leftArray.removeFirst())
+    }
+    
+    while !rightArray.isEmpty {
+        sortedArray.append(rightArray.removeFirst())
+    }
+    
+    return sortedArray
+}
+
+
+print(mergeSort2(items))
+
