@@ -10,9 +10,9 @@ func binarySearch(_ array: [Int], value: Int) -> Int? {
     
     while lowIndex <= highIndex {
         let midIndex = (lowIndex + highIndex) / 2
-        if array[midIndex] == value {
+        if value == array[midIndex] {
             return midIndex
-        } else if array[midIndex] < value {
+        } else if value > array[midIndex] {
             lowIndex = midIndex + 1
         } else {
             highIndex = midIndex - 1
